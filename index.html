@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>lisp2js demo</title>
+    <style type="text/css">
+    #editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        float: right
+        width: 50%;
+    }
+    #editor2{
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        float: left;
+        width: 50%;
+    }
+    #wraper{
+        position: absolute;
+        right: 5%;
+        top: 5%;
+        color:white;
+        z-index: 998;
+    }
+    #compile_btn{
+        z-index: 999;
+        width: 80px;
+        height: 30px;
+    }
+    </style>
+</head>
+<body>
+    <div id="editor">
+    function foo(items) {
+        var x = "All this is syntax highlighted";
+        return x;
+    }
+    </div>
+    <div id="editor2">
+    (def x 1)
+    (def y [1 2 3])
+    </div>
+
+    <div id="wraper">
+        <button id="compile_btn">Run</button>
+    </div>
+</body>
+<script src="http://ace.ajax.org/build/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://rawgit.com/shd101wyy/lisp2js/master/lisp.js">
+<script>
+
+var js_editor = ace.edit("editor");
+js_editor.setTheme("ace/theme/monokai");
+js_editor.getSession().setMode("ace/mode/javascript");
+
+var lisp_editor = ace.edit("editor2");
+lisp_editor.setTheme("ace/theme/monokai");
+lisp_editor.getSession().setMode("ace/mode/lisp");
+</script>
+</html>
