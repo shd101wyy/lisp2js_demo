@@ -27,11 +27,14 @@
         top: 5%;
         color:white;
         z-index: 998;
+        width: 85px;
     }
-    #compile_btn{
+    /*#compile_btn{*/
+    .my_button{
         z-index: 999;
         width: 80px;
         height: 30px;
+        margin-top: 10px;
     }
     </style>
 </head>
@@ -144,7 +147,8 @@
     </div>
 
     <div id="wraper">
-        <button id="compile_btn">Run</button>
+        <button id="compile_btn" class="my_button">Run</button>
+        <button id="clear_btn" class="my_button">Clear</button>
     </div>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -169,10 +173,17 @@ $(document).ready(function(){
     var compiled = lisp.compile(content);
     js_editor.setValue("\n"+js_beautify(compiled), 1);
 
+    // compile and run
     $("#compile_btn").click(function(){
         var content = lisp_editor.getSession().getValue();
         var compiled = lisp.compile(content);
         js_editor.setValue("\n"+js_beautify(compiled), 1);
+    })
+
+    // clear editors
+    $("#clear_btn").click(function(){
+        lisp_editor.setValue("");
+        js_editor.setValue("");
     })
 })
 
