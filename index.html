@@ -149,6 +149,8 @@
     <div id="wraper">
         <button id="compile_btn" class="my_button">Run</button>
         <button id="clear_btn" class="my_button">Clear</button>
+        <!--<button id="save_btn" class="my_button" display="none">Save</button>
+        <button id="load_btn" class="my_button" display="none">Load</button>-->
     </div>
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -185,6 +187,50 @@ $(document).ready(function(){
         lisp_editor.setValue("");
         js_editor.setValue("");
     })
+
+    /*
+    // save current content
+    $("#save_btn").click(function(){
+        try{
+            var file_name = prompt("Save to local storage\nFilename: ");
+            var content = lisp_editor.getSession().getValue();
+            var v;
+            if(!window.localStorage["lisp"]){
+                v = {};
+            }
+            else{
+                v = JSON.parse(window.localStorage["lisp"]);
+            }
+            v[file_name] = content;
+            console.log(v);
+            window.localStorage["lisp"] = JSON.stringify(v);
+        }
+        catch(e){
+            window.localStorage["lisp"] = "{}";
+        }
+    })
+
+    // load local storage Filename
+    $("#load_btn").click(function(){
+        if(window.localStorage["lisp"]){
+            var v = JSON.parse(window.localStorage["lisp"]);
+            var keys = Object.keys(v);
+            var o = "Existed Files: ";
+            for(var i = 0; i < keys.length; i++){
+                o += (keys[i] + "\n");
+            }
+            console.log(o);
+            var f = prompt(o);
+            var content = v[f];
+            lisp_editor.setValue(content);
+            var compiled = lisp.compile(content);
+            js_editor.setValue("\n" + js_beautify(compiled), 1);
+        }
+        else{
+            alert("No file saved");
+        }
+    })
+    */
 })
 
 </script>
