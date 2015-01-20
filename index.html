@@ -169,7 +169,7 @@ $(document).ready(function(){
 
     var lisp_editor = ace.edit("editor2");
     lisp_editor.setTheme("ace/theme/monokai");
-    lisp_editor.getSession().setMode("ace/mode/lisp");
+    lisp_editor.getSession().setMode("ace/mode/clojure");
 
     var content = lisp_editor.getSession().getValue();
     var compiled = lisp.compile(content);
