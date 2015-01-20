@@ -154,6 +154,9 @@
 <script>
 
 $(document).ready(function(){
+    if(navigator.userAgent.search("Firefox") < 0){
+        alert("Sorry, your browser doesnt support ECMAScript6(es6), please use Firefox");
+    }
     var js_editor = ace.edit("editor");
     js_editor.setTheme("ace/theme/monokai");
     js_editor.getSession().setMode("ace/mode/javascript");
