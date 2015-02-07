@@ -179,7 +179,12 @@ $(document).ready(function(){
     $("#compile_btn").click(function(){
         var content = lisp_editor.getSession().getValue();
         var compiled = lisp.compile(content);
-        js_editor.setValue("\n"+js_beautify(compiled), 1);
+        try{
+            js_editor.setValue("\n"+js_beautify(compiled), 1);
+        }
+        catch(e){
+            console.log(e);
+        }
     })
 
     // clear editors
